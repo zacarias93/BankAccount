@@ -24,6 +24,7 @@ public class App {
         transact.creditAccount(baller2,20);
         transact.creditAccount(baller1,20);
         transact.debitAccount(baller1,70);
+        transact.transferMoney(baller2,baller1,15);
         baller1.setAccountStatus(BankAccount.Status.FROZEN);
         baller1.showAccountBalance();
         baller1.setAccountHolderName("Zachary");

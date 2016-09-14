@@ -1,5 +1,4 @@
 package lee.zac.BankAccounts;
-import java.util.*;
 
 /**
  * Created by zaclee on 9/13/16.
@@ -16,16 +15,15 @@ public class Transactions {
 
     }
 
-    public void approvalStatus() {
-        System.out.println("Your transaction was approved. Your new balance is: ");
+    public void transactionApprovedMessage() {
+        System.out.println("Your transaction was approved. Your new balance is: " + newBalance);
     }
 
     public void creditAccount(BankAccount bankAccount, double num) {
         if(bankAccount.getAccountStatus() == BankAccount.Status.OPEN) {
             newBalance = bankAccount.getAccountBalance() + num;
-            approvalStatus();
+            transactionApprovedMessage();
             bankAccount.setAccountBalance(newBalance);
-            System.out.println(newBalance);
             bankAccount.setAccountHistory("You credited " + num + " to your account. ");
         }
         else { System.out.println("This account is not open."); }
@@ -38,10 +36,9 @@ public class Transactions {
                 System.out.println("OverDraft protection is enabled - this transaction was denied.");
             } else {
                 newBalance = bankAccount.getAccountBalance() - num;
-                approvalStatus();
+                transactionApprovedMessage();
                 bankAccount.setAccountBalance(newBalance);
                 bankAccount.setAccountHistory("You debited " + num + " from your account. ");
-                System.out.println(newBalance);
             }
         }
         else { System.out.println("This account is not open."); }
@@ -58,12 +55,12 @@ public class Transactions {
                 newBalanceAccountTransferredFrom = transferFrom.getAccountBalance() - amountTransfer;
                 transferFrom.setAccountBalance(newBalanceAccountTransferredFrom);
                 transferTo.setAccountBalance(newBalanceAccountTransferredTo);
-                approvalStatus();
                 historyMessage = "You transferred " + amountTransfer + " from " + transferFrom.getAccountHolderName() + " to " + transferTo.getAccountHolderName();
                 transferFrom.setAccountHistory(historyMessage);
                 transferTo.setAccountHistory(historyMessage);
-                System.out.println("Account 1: " + newBalanceAccountTransferredFrom);
-                System.out.println("Account 2: " + newBalanceAccountTransferredTo);
+                System.out.println(historyMessage);
+                System.out.println("New balance for Account 1: " + newBalanceAccountTransferredFrom);
+                System.out.println("New balance for Account 2: " + newBalanceAccountTransferredTo);
             }
         }
         else { System.out.println("This account is not open."); }
