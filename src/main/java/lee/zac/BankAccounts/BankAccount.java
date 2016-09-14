@@ -28,13 +28,6 @@ public class BankAccount {
         counter++;
     }
 
-    public void getAccountNumber() {
-        System.out.println(accountNumber);
-    }
-
-
-
-
     enum Type { CHECKING, SAVINGS, INVESTMENT }
 
     enum Status { OPEN, CLOSED, FROZEN }
