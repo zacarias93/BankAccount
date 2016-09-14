@@ -5,21 +5,17 @@ package lee.zac.BankAccounts;
  */
 public class App {
 
-//    Things I need to do still -
-//    History of changes
-//    credit / debit / transfer
-//    changes to : status / name / interest rate
-
-
-
-
+//    To Do List
+//   document change if changing interest rate - add it
 
 
 
     public static void main(String[] args) {
-        BankAccount baller1 = new BankAccount("Zac", 001, BankAccount.Type.CHECKING);
-        BankAccount baller2 = new BankAccount("Grace", 002, BankAccount.Type.SAVINGS);
+        BankAccount baller1 = new BankAccount("Zac", BankAccount.Type.CHECKING);
+        BankAccount baller2 = new BankAccount("Grace", BankAccount.Type.SAVINGS);
         Transactions transact = new Transactions();
+        baller1.getAccountNumber();
+        baller2.getAccountNumber();
         transact.creditAccount(baller1,50);
         transact.creditAccount(baller2,20);
         transact.creditAccount(baller1,20);

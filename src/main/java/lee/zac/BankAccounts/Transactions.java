@@ -10,10 +10,6 @@ public class Transactions {
     double newBalanceAccountTransferredFrom;
     String historyMessage;
 
-    public Transactions() {
-
-
-    }
 
     public void transactionApprovedMessage() {
         System.out.println("Your transaction was approved. Your new balance is: " + newBalance);

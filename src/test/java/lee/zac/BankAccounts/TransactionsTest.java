@@ -17,8 +17,8 @@ public class TransactionsTest {
 
     @Before
     public void setUpTest(){
-        baller1 = new BankAccount("Zac",1,BankAccount.Type.CHECKING);
-        baller2 = new BankAccount("Jalisa",2,BankAccount.Type.CHECKING);
+        baller1 = new BankAccount("Zac",BankAccount.Type.CHECKING);
+        baller2 = new BankAccount("Jalisa",BankAccount.Type.CHECKING);
         transact = new Transactions();
         baller1.setAccountBalance(10);
         baller2.setAccountBalance(20);

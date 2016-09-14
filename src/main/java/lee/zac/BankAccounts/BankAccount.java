@@ -1,33 +1,39 @@
 package lee.zac.BankAccounts;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by zaclee on 9/13/16.
  */
 public class BankAccount {
-
+    static private int counter=1;
     private String accountHolderName;
-    private int accountNumber;
+    private int accountNumber=0;
     private Type accountType;
     private double accountBalance;
     private Status accountStatus;
     private double interestRate; // setters for interest rate?
     private boolean overDraftStatus; // make setters?
     private List accountHistory; // this is going to be an Array List
-    private boolean accountOpen; // make method if true use for transactions.
 
-    public BankAccount(String name, int number, Type type) {
+    public BankAccount(String name, Type type) {
         accountHolderName = name;
-        accountNumber = number;
+        accountNumber = counter;
         accountType = type;
         accountBalance = 0;
         accountStatus = Status.OPEN;
         accountHistory = new ArrayList<String>();
         overDraftStatus = false;
+        counter++;
     }
+
+    public void getAccountNumber() {
+        System.out.println(accountNumber);
+    }
+
+
+
 
     enum Type { CHECKING, SAVINGS, INVESTMENT }
 
@@ -118,6 +124,7 @@ public class BankAccount {
     public double getInterestRate() {
         return interestRate;
     }
+
 
 }
 
