@@ -105,11 +105,9 @@ public class BankAccount {
     }
 
     public void showTransactions() {
-
-        for(int i=0; i<accountHistory.size(); i++) {
-            System.out.println(accountHistory.get(i));
+        System.out.println(accountHistory.toString());
         }
-    }
+
 
     public void setInterestRate(double interest) {
         interestRate = interest;
