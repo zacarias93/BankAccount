@@ -42,7 +42,7 @@ public class Transactions {
     //You take from the first and add to the second - so check that first has enough to not go negative and go ahead.
     public void transferMoney(BankAccount transferFrom, BankAccount transferTo, double amountTransfer) {
 
-        if (transferFrom.getAccountStatus() == BankAccount.Status.OPEN && transferTo.getAccountStatus() == BankAccount.Status.OPEN && transferFrom.getAccountHolderName() == transferTo.getAccountHolderName()) {
+        if (transferFrom.getAccountStatus() == BankAccount.Status.OPEN && transferTo.getAccountStatus() == BankAccount.Status.OPEN ) {
 
             if ((transferFrom.getAccountBalance() - amountTransfer) < 0) {
                 System.out.println("You do not have sufficient funds to make this transfer");

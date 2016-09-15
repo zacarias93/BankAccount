@@ -22,11 +22,11 @@ public class App {
         transact.creditAccount(baller1,20);
         transact.debitAccount(baller1,70);
         transact.transferMoney(baller2,baller1,15);
-        baller1.setAccountStatus(BankAccount.Status.FROZEN);
+        baller1.setAccountStatus(BankAccount.Status.OPEN);
         baller1.showAccountBalance();
         baller1.setAccountHolderName("Zachary");
         baller1.setAccountStatus(BankAccount.Status.OPEN);
-        baller1.setAccountStatus(BankAccount.Status.CLOSED);
+        baller1.setAccountStatus(BankAccount.Status.OPEN);
 
         System.out.println();
 

@@ -13,9 +13,9 @@ public class BankAccount {
     private Type accountType;
     private double accountBalance;
     private Status accountStatus;
-    private double interestRate; // setters for interest rate?
-    private boolean overDraftStatus; // make setters?
-    private List accountHistory; // this is going to be an Array List
+    private double interestRate;
+    private boolean overDraftStatus;
+    private List accountHistory;
 
     public BankAccount(String name, Type type) {
         accountHolderName = name;
@@ -64,6 +64,7 @@ public class BankAccount {
     public boolean getOverdraftStatus() {
         return overDraftStatus;
     }
+
     public void setOverDraftStatus(boolean boo) {
         overDraftStatus = boo;
         System.out.println("OverDraft Protection Enabled.");
@@ -112,6 +113,9 @@ public class BankAccount {
 
     public void setInterestRate(double interest) {
         interestRate = interest;
+        String message = "The interest rate was set to: " + interest;
+        System.out.println(message);
+        setAccountHistory(message);
     }
 
     public double getInterestRate() {
