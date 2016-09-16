@@ -13,43 +13,27 @@ public class App {
 
     public static void main(String[] args) {
         BankAccount baller1 = new BankAccount("Zac", BankAccount.Type.CHECKING);
-        BankAccount baller2 = new BankAccount("Grace", BankAccount.Type.SAVINGS);
-        BankAccount baller3 = new BankAccount("Zac", BankAccount.Type.SAVINGS);
-        Transactions transact = new Transactions();
-        transact.creditAccount(baller1,50);
-        transact.transferMoney(baller1,baller3,10);
-        transact.creditAccount(baller2,20);
-        transact.creditAccount(baller1,20);
-        transact.debitAccount(baller1,70);
-        baller1.showTransactions();
-        transact.transferMoney(baller2,baller1,15);
-        baller1.setAccountStatus(BankAccount.Status.OPEN);
-        baller1.showAccountBalance();
-        baller1.setAccountHolderName("Zachary");
-        baller1.setAccountStatus(BankAccount.Status.OPEN);
-        baller1.setAccountStatus(BankAccount.Status.OPEN);
+        BankAccount baller2 = new BankAccount("Zac", BankAccount.Type.INVESTMENT);
 
+        baller1.creditAccount(50);
+        baller1.debitAccount(20);
+        baller1.transferMoney(baller1,baller2,20);
+        baller1.setOverDraftStatus(false);
+        baller1.setOverDraftStatus(true);
+
+
+        baller1.transferMoney(baller1,baller2,20d);
+        System.out.println(baller1.getAccountBalance());
+        System.out.println(baller2.getAccountBalance());
+
+
+
+
+        baller2.getHistory().showTransactions();
         System.out.println();
+        baller1.getHistory().showTransactions();
 
-        baller1.showTransactions();
-
-        System.out.println();
-
-        transact.debitAccount(baller1,20);
-        transact.transferMoney(baller1,baller2,20);
-        transact.creditAccount(baller2,30);
-        transact.debitAccount(baller2,20);
-        baller2.setAccountStatus(BankAccount.Status.CLOSED);
-        baller1.setAccountStatus(BankAccount.Status.OPEN);
-        baller1.setAccountStatus(BankAccount.Status.FROZEN);
-        System.out.println();
-        baller1.showTransactions();
-        System.out.println();
-        baller2.showTransactions();
-
-
-
-
+        baller1.transferMoney();
 
 
     }
