@@ -29,11 +29,10 @@ public class App {
 
 
 
-        baller2.getHistory().showTransactions();
+        baller2.showTransactions();
         System.out.println();
-        baller1.getHistory().showTransactions();
+        baller1.showTransactions();
 
-        baller1.transferMoney();
 
 
     }

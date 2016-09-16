@@ -19,7 +19,9 @@ public class BankAccount {
     double newBalanceAccountTransferredTo;
     double newBalanceAccountTransferredFrom;
     String historyMessage;
-    private TransactionHistory history;
+    private ArrayList<String> transactionHistory = new ArrayList<String>();
+
+
 
     public BankAccount(String name, Type type) {
         accountHolderName = name;
@@ -29,19 +31,21 @@ public class BankAccount {
         accountStatus = Status.OPEN;
         overDraftStatus = false;
         counter++;
-        history = new TransactionHistory();
-    }
+        transactionHistory = new ArrayList<String>();    }
 
     enum Type {CHECKING, SAVINGS, INVESTMENT}
 
     enum Status {OPEN, CLOSED, FROZEN}
 
-    public TransactionHistory getHistory() {
-        return history;
+    public void showTransactions() {
+        System.out.println(transactionHistory.toString());
+    }
+    public void setAccountHistory(String str) {
+        transactionHistory.add(str);
     }
 
     public String setAccountHolderName(String name) {
-        history.setAccountHistory("Name changed to: " + name);
+        this.setAccountHistory("Name changed to: " + name);
         return accountHolderName = name;
     }
 
@@ -91,21 +95,21 @@ public class BankAccount {
         } else { // THis means if your ACC is not already close then :
             if (setStatus == Status.CLOSED && accountBalance == 0) { // if try to close and balance is 0 then close
                 accountStatus = setStatus;
-                history.setAccountHistory("Account closed.");
+                this.setAccountHistory("Account closed.");
                 System.out.println("Your account is closed.");
             } else if (setStatus == Status.CLOSED && accountBalance != 0) { // try to close and balance != 0
                 System.out.println("Your account balance is not zero.");
-                history.setAccountHistory("Tried to close account, balance not zero.");
+                this.setAccountHistory("Tried to close account, balance not zero.");
             } else {
                 if (setStatus == Status.FROZEN) {
                     accountStatus = setStatus;
                     System.out.println("The account is frozen.");
-                    history.setAccountHistory("Account frozen.");
+                    this.setAccountHistory("Account frozen.");
 
                 } else if (setStatus == Status.OPEN) {
                     accountStatus = setStatus;
                     System.out.println("The account is open");
-                    history.setAccountHistory("Account opened.");
+                    this.setAccountHistory("Account opened.");
                 }
             }
         }
@@ -119,7 +123,7 @@ public class BankAccount {
         interestRate = interest;
         String message = "The interest rate was set to: " + interest;
         System.out.println(message);
-        history.setAccountHistory(message);
+        this.setAccountHistory(message);
     }
 
     public double getInterestRate() {
@@ -131,7 +135,7 @@ public class BankAccount {
             newBalance = this.getAccountBalance() + num;
             transactionApprovedMessage();
             this.setAccountBalance(newBalance);
-            history.setAccountHistory("You credited " + num + " to your account. ");
+            this.setAccountHistory("You credited " + num + " to your account. ");
         } else {
             System.out.println("This account is not open.");
         }
@@ -146,7 +150,7 @@ public class BankAccount {
                 newBalance = this.getAccountBalance() - num;
                 transactionApprovedMessage();
                 this.setAccountBalance(newBalance);
-                history.setAccountHistory("You debited " + num + " from your account. ");
+                this.setAccountHistory("You debited " + num + " from your account. ");
             }
         } else {
             System.out.println("This account is not open.");
@@ -166,8 +170,8 @@ public class BankAccount {
                 transferFrom.setAccountBalance(newBalanceAccountTransferredFrom);
                 transferTo.setAccountBalance(newBalanceAccountTransferredTo);
                 historyMessage = "You transferred " + amountTransfer + " from " + transferFrom.getAccountHolderName() + " to " + transferTo.getAccountHolderName();
-                transferFrom.history.setAccountHistory(historyMessage);
-                transferTo.history.setAccountHistory(historyMessage);
+                transferFrom.setAccountHistory(historyMessage);
+                transferTo.setAccountHistory(historyMessage);
                 System.out.println(historyMessage);
                 System.out.println("New balance for Account 1: " + newBalanceAccountTransferredFrom);
                 System.out.println("New balance for Account 2: " + newBalanceAccountTransferredTo);
@@ -176,10 +180,5 @@ public class BankAccount {
         else { System.out.println("This account is not open."); }
     }
 }
-
-
-
-
-
 
 
